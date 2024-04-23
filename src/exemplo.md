@@ -80,7 +80,7 @@ Este é um exemplo de gabarito, entre `md :::`.
 
 ![](graph.png)
 
-Podemos inicializar as distâncias em uma matriz:
+Podemos inicializar as distâncias em uma matriz
 ``` c
 int dist[][] = {
     [0, 5, 9, 11, INF, INF],
