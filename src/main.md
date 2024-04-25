@@ -1,16 +1,20 @@
-Título
+Algoritmo de Floyd-Warshall
 ======
 
-Subtítulo
+Objetivos
 ---------
 
-Para criar um parágrafo, basta escrever um texto contínuo, sem pular linhas.
+Ao final desse handout, você deve ser capaz de:
 
-Você também pode criar
+- Entender o algoritmo de Floyd-Warshall
+- Implementar esse mesmo algoritmo em C
 
-1. listas;
+Grafos e o problema do caminho mais curto
+----------
 
-2. ordenadas,
+Imagine que você é um aluno que mora um pouco afastado do Insper. Em um dia anormal, o caminho que você costuma fazer está extremamente congestionado. Existem algumas rotas alternativas que você pode usar, mas elas costumam ser mais longas. Como você poderia fazer para descobrir qual é a **rota mais rápida?**
+
+Um dos jeitos de desenhar esse problema é através de um **grafo**.
 
 assim como
 
