@@ -137,3 +137,22 @@ Independente do número de arestas, o algoritmo fará comparações considerando
 :::
 
 ???
+
+Agora um pouco de prática!
+
+??? Exercício
+
+Considere o seguinte grafo:
+
+![](graph2.png)
+
+Escreva como está a matriz de distâncias após cada iteração do loop mais externo.
+
+Dica: pense no código em alto nível. Provavelmente será mais difícil tentando simular o algoritmo na sua mente
+
+
+::: Gabarito
+
+:::
+
+???
