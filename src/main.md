@@ -118,7 +118,7 @@ isso pode ser traduzido bem diretamente para C:
 for (int k = 0; k < V; k++) {
     for (int i = 0; i < V; i++) {
         for (int j = 0; j < V; j++) {
-            if (dist[i][k] + dist[k][j] > dist[i][j]) {
+            if (dist[i][k] + dist[k][j] < dist[i][j]) {
                 dist[i][j] = dist[i][k] + dist[k][j];
             }
         }
@@ -148,10 +148,19 @@ Considere o seguinte grafo:
 
 Escreva como está a matriz de distâncias após cada iteração do loop mais externo.
 
-Dica: pense no código em alto nível. Provavelmente será mais difícil tentando simular o algoritmo na sua mente
+**Dica**: pense no código em alto nível. Provavelmente será mais difícil tentando simular o algoritmo na sua mente.
 
+::: Outra Dica
+
+Comece construindo a matriz de distâncias:
+
+![](ex2_0.drawio.png)
+
+:::
 
 ::: Gabarito
+
+:ex2
 
 :::
 
