@@ -102,7 +102,16 @@ A distância entre um ponto e ele mesmo é zero. A distância entre dois pontos 
 Intuitivamente, podemos pensar em testar todos os caminhos possíveis, mas isso demoraria muito. E se escolhermos um ponto intermediário?
 
 
-Pense na ideia do algoritmo. Como ficaria seu pseudocódigo?
+A ideia envolve passar por cada ponto do grafo e tratá-lo como se fosse um intermedíario entre outros dois pontos. Escolhendo um ponto qualquer de partida, calcular a distância entre ele e o intermediário mais o intermediário e todos os outros pontos. Se essa nova distância for menor que a original, substituímos na matriz de distância. E repetimos isso, considerando todos os pontos como ponto de partida.
+
+Após consideerar todos os pontos como intermediários, sabemos que a matriz possui as menores distâncias entre quaisquer dois pontos. Isso ocorre porque quando escolhemos um ponto `md k`, temos certeza de que para todos os pontos até `md k - 1`, já temos as menores distâncias sem passar pelos pontos `md k` a `mk V`. Ou seja, após considerar todos os pontos, temos todas as menores distâncias.
+
+
+??? Checkpoint
+
+Agora pense na ideia do algoritmo. Como ficaria seu pseudocódigo?
+
+::: Gabarito
 
 ``` pseudocodigo
 para cada vértice entre A, B, ..., F:
@@ -112,6 +121,10 @@ para cada vértice entre A, B, ..., F:
             se a nova distancia for menor que a distancia registrada na matriz:
                 substituir a distancia na matriz
 ```
+
+:::
+
+???
 
 isso pode ser traduzido bem diretamente para C:
 ``` c
@@ -126,19 +139,9 @@ for (int k = 0; k < V; k++) {
 }
 ```
 
-Como podemos ver na implementação, existem 3 loops aninhados. Pela receita para estimar complexidade estudada na Aula 6, sabemos que a complexidade desse algoritmo é O(n³)
+Como podemos ver na implementação, existem 3 loops aninhados. Pela receita para estimar complexidade estudada na [Aula 6](https://ensino.hashi.pro.br/desprog/aula/6/), sabemos que a complexidade desse algoritmo é O(n³)
 
-??? Exercício
-
-Pare um pouco para pensar na complexidade desse algoritmo. E o número de arestas, não influencia?
-
-::: Gabarito
-Independente do número de arestas, o algoritmo fará comparações considerando todos os caminhos possíveis. O número de arestas no começo não influencia a complexidade desse algoritmo.
-:::
-
-???
-
-Agora um pouco de prática!
+Ufa, chega de teoria. Agora um pouco de prática!
 
 ??? Exercício
 
