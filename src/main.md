@@ -12,11 +12,13 @@ Ao final desse handout, você deve ser capaz de:
 Grafos e o problema do caminho mais curto
 ----------
 
-Imagine que você é um aluno que mora um pouco afastado do Insper. Em um dia anormal, o caminho que você costuma fazer está extremamente congestionado. Existem algumas rotas alternativas que você pode usar, mas elas costumam ser mais longas. Como você poderia fazer para descobrir qual é a **rota mais rápida?**
+Imagine que você faz parte de uma entidade no Insper com estudantes espalhados por toda a cidade de São Paulo. Ao debater sobre o melhor horário para reuniões, você percebe que o trânsito é um grande problema para uma boa parte desses estudantes. Além disso, cada um tem um ponto de partida diferente.
 
-Um dos jeitos de desenhar esse problema é através de um **grafo**.
+Você assumiu a missão de analisar esse problema e sugerir o melhor horário médio para as reuniões considerando o tempo de locomoção de cada estudante. Uma estratégia interessante seria obter o tempo médio de locomoção entre o Insper e cada um dos estudantes e realizar uma análise a partir disso.
 
-![Grafo de rotas](grafo_transito.png)
+Um dos jeitos de desenhar esse problema e delinear as informações é através de um **grafo**.
+
+![Grafo de rotas](grafo_inicial.png)
 
 Em grafos como esse, denominamos as "bolinhas" de **vértices** e as linhas de **arestas**. Cada aresta tem um **peso**, que, nesse caso, representa o tempo de locomoção (em minutos) entre os vértices.
 
@@ -30,27 +32,11 @@ O peso atribuído às arestas pode ser medido em distância, custo, ou qualquer 
 
 ???
 
-No nosso sistema, temos que o vértice **A** é a sua casa, o vértice **G** é o Insper, e os demais vértices são *pontos intermediários*. O problema que queremos resolver é: **qual é o caminho mais curto entre a sua casa e o Insper?**
+Em nosso sistema, vamos considerar o vértice **I** como o Insper e todos os outros vértices como pontos de partida dos estudantes. É provável que você consiga inferir qual o ponto mais distante e qual o mais próximo a partir da imagem. No entanto, não é uma tarefa rápida calcular o tempo de locomoção exato entre todos os vértices, ainda mais considerando que existem variados caminhos.
 
-??? Exercício
+Esse problema e suas variações são conhecidos como o **problema do caminho mais curto**. O algoritmo que vamos falar hoje é um dos que visa simplificar a resolução desse problema. Diferentemente de outros métodos semelhantes, o algoritmo de Floyd-Warshall é capaz de calcular o caminho mais curto entre todos os pares de vértices de uma vez só. Interessante, não?
 
-Olhando rapidamente, você consegue dizer qual é o caminho mais curto entre a sua casa e o Insper?
-
-::: Gabarito
-Com algumas contas rápidas, vemos que o caminho mais curto é A -> B -> C -> F -> G.
-:::
-
-???
-
-Legal! Essa foi fácil. Mas, digamos, que ao seguir por esse caminho e ao chegar em **C**, houve um imprevisto e você precisa mudar de rota. Agora, existem inúmeras opções de caminho.
-
-![Grafo de rotas alternativas](grafo_transito_2.png)
-
-No meio do trajeto, seria impossível calcular todas as possibilidades rapidamente como fizemos antes.
-
-Esse problema e suas variações são conhecidos como o **problema do caminho mais curto**. O algoritmo que vamos falar hoje é um dos que visa simplificar a resolução desse problema.
-
-Vamos lá.
+Bom, vamos lá.
 
 O algoritmo
 ----------
