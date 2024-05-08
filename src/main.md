@@ -20,7 +20,9 @@ Um dos jeitos de desenhar esse problema e delinear as informações é através 
 
 ![Grafo de rotas](grafo_inicial.png)
 
-Em grafos como esse, denominamos as "bolinhas" de **vértices** e as linhas de **arestas**. Cada aresta tem um **peso**, que, nesse caso, representa o tempo de locomoção (em minutos) entre os vértices.
+À primeira vista, um diagrama como esse pode parecer confuso, mas ele é uma maneira eficiente de representar relações entre objetos. Vamos tentar entender alguns de seus elementos.
+
+Quando analisamos grafos, denominamos as "bolinhas" de **vértices** e as linhas de **arestas**. Cada aresta tem um **peso**, que, nesse caso, representa o tempo de locomoção (em minutos) entre os vértices. Além disso, embora não seja obrigatório, alguns grafos apresentam setas que indicam a **direção** da relação entre os vértices. Esse é o caso do exemplo acima.
 
 ??? Aquecimento
 
