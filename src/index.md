@@ -94,7 +94,7 @@ Apesar de ter sido um exemplo simples, podemos pensar em uma maneira de generali
 
 Vamos começar apenas com os pesos descritos na imagem. Depois, considerar que um ponto `md A` pode ser usado como ponto intermediário, e ver se o caminho entre todos os pares de pontos, passando por ele, é menor do que o registrado anteriormente. Depois, considerar que um ponto `md B` pode também (além de `md A`) ser considerado como intermediário, e ver novamente se o caminho entre todos os pares de pontos, passando por quaisquer intermediários, é menor do que o registrado anteriormente. E repetir isso até que todos os pontos tenham sido considerados intermediários.
 
-Essa é a ideia por trás do algoritmo de Floyd-Warshall.
+Essa é a ideia por trás do algoritmo de Floyd-Warshall. Como podemos perceber, é um algoritmo de **programação dinâmica**. Assim como na [APS3](https://ensino.hashi.pro.br/desprog/aps/3/), sempre que precisamos de um valor, podemos pegá-lo na matriz (não precisamos calcular mais de uma vez)
 
 ??? Exercício
 
