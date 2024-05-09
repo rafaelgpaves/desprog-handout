@@ -72,7 +72,7 @@ O valor `INF` representa a inexistência de uma aresta entre dois vértices. O v
 
 ???
 
-Intuitivamente, podemos pensar em testar todos os caminhos possíveis, mas isso demoraria muito e seria pouco eficiente. E se escolhessemos um ponto intermediário?
+Um método que funcionaria é testar todos os caminhos possíveis, mas isso demoraria muito e seria pouco eficiente. Deve existir um método melhor.
 
 ??? Exercício
 
@@ -90,7 +90,9 @@ A distância entre **A** e **B** é inicializada na matriz como 50. No entanto, 
 
 Apesar de ter sido um exemplo simples, podemos pensar em uma maneira de generalizar essa lógica para todos os vértices do grafo, que podem possuir mais de um caminho intermediário.
 
-A ideia do algoritmo é começar apenas com os pesos descritos na imagem. Depois, considerar que um ponto `md A` pode ser usado como ponto intermediário, e ver se o caminho entre todos os pares de pontos, passando por ele, é menor do que o registrado anteriormente. Depois, considerar que um ponto `md B` pode também (além de `md A`) ser considerado como intermediário, e ver novamente se o caminho entre todos os pares de pontos, passando por quaisquer intermediários, é menor do que o registrado anteriormente. E repetir isso até que todos os pontos tenham sido considerados intermediários.
+Vamos começar apenas com os pesos descritos na imagem. Depois, considerar que um ponto `md A` pode ser usado como ponto intermediário, e ver se o caminho entre todos os pares de pontos, passando por ele, é menor do que o registrado anteriormente. Depois, considerar que um ponto `md B` pode também (além de `md A`) ser considerado como intermediário, e ver novamente se o caminho entre todos os pares de pontos, passando por quaisquer intermediários, é menor do que o registrado anteriormente. E repetir isso até que todos os pontos tenham sido considerados intermediários.
+
+Essa é a ideia por trás do algoritmo de Floyd-Warshall.
 
 ??? Exercício
 
@@ -110,7 +112,17 @@ para cada vértice entre A, B, ..., F:
 
 Mas por que isso funciona, e a matriz sai no final com os valores de caminhos mais curtos entre quaisquer par de pontos?
 
-Quando incluimos um ponto `md P` na lista de pontos considerados como intermediários, já temos na matriz de distâncias o caminho ótimo (caminho mais curto) entre, digamos, dois pontos `md x` e `md y` (desconsiderando `md P`). A partir disso, podemos possivelmente melhorar o caminho considerando também `md P`, então no final da iteração do loop a matriz terá o caminho ótimo considerando-o também. Ou seja, depois de considerarmos que todos os pontos podem ser intermediários, a matriz terá a menor distância entre quaisquer dois pontos.
+??? Checkpoint
+
+Vamos considerar o grafo do começo dessa seção novamente. Começamos montando a matriz de distâncias. O que significa incluir um novo ponto no conjunto de pontos intermediários?
+
+::: Gabarito
+
+Quando incluimos um ponto `md B` na lista de pontos considerados como intermediários, já temos na matriz de distâncias o caminho ótimo (caminho mais curto) entre, digamos, dois pontos `md A` e `md E` (desconsiderando `md B`). A partir disso, podemos possivelmente melhorar o caminho considerando também `md B`, então no final da iteração do loop a matriz terá o caminho ótimo considerando-o também. Ou seja, depois de considerarmos que todos os pontos podem ser intermediários, a matriz terá a menor distância entre quaisquer dois pontos.
+
+:::
+
+???
 
 Continuando com o algoritmo, se a distância calculada através dos intermediários for menor que a original, substituímos na matriz de distância.
 
