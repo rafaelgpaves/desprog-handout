@@ -90,7 +90,7 @@ A distância entre **A** e **B** é inicializada na matriz como 50. No entanto, 
 
 Apesar de ter sido um exemplo simples, podemos pensar em uma maneira de generalizar essa lógica para todos os vértices do grafo, que podem possuir mais de um caminho intermediário.
 
-A ideia envolve passar por **cada ponto** do grafo e tratá-lo como se fosse um intermediário entre outros dois pontos. Após isso, escolhendo um ponto qualquer de partida, calculamos a distância entre ele, o intermediário e todos os outros possíveis pontos de chegada.
+A ideia do algoritmo é começar apenas com os pesos descritos na imagem. Depois, considerar que um ponto `md A` pode ser usado como ponto intermediário, e ver se o caminho entre todos os pares de pontos, passando por ele, é menor do que o registrado anteriormente. Depois, considerar que um ponto `md B` pode também (além de `md A`) ser considerado como intermediário, e ver novamente se o caminho entre todos os pares de pontos, passando por quaisquer intermediários, é menor do que o registrado anteriormente. E repetir isso até que todos os pontos tenham sido considerados intermediários.
 
 ??? Exercício
 
@@ -108,9 +108,11 @@ para cada vértice entre A, B, ..., F:
 
 ???
 
-Se a distância calculada através dos intermediários for menor que a original, substituímos na matriz de distância.
+Mas por que isso funciona, e a matriz sai no final com os valores de caminhos mais curtos entre quaisquer par de pontos?
 
-Após considerar todos os pontos como intermediários, sabemos que a matriz possui as menores distâncias entre quaisquer dois pontos. Isso ocorre porque quando escolhemos um ponto `md k`, temos certeza de que para todos os pontos até `md k - 1`, já temos as menores distâncias sem passar pelos pontos `md k` a `mk V`. Ou seja, após considerar todos os pontos, temos todas as menores distâncias.
+Quando incluimos um ponto `md P` na lista de pontos considerados como intermediários, já temos na matriz de distâncias o caminho ótimo (caminho mais curto) entre, digamos, dois pontos `md x` e `md y` (desconsiderando `md P`). A partir disso, podemos possivelmente melhorar o caminho considerando também `md P`, então no final da iteração do loop a matriz terá o caminho ótimo considerando-o também. Ou seja, depois de considerarmos que todos os pontos podem ser intermediários, a matriz terá a menor distância entre quaisquer dois pontos.
+
+Continuando com o algoritmo, se a distância calculada através dos intermediários for menor que a original, substituímos na matriz de distância.
 
 ??? Checkpoint
 
