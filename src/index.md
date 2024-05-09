@@ -47,18 +47,20 @@ A ideia do algoritmo de Floyd-Warshall é calcular a menor distância entre *tod
 
 Vamos entender como ele funciona através de um exemplo.
 
-![Grafo exemplo](graph.png)
+![Grafo exemplo](grafo_exemplo.png)
+
+Perceba que esse é um grafo **não direcionado**. Isso significa que a relação entre os vértices é simétrica, ou seja, se a distância entre **A** e **B** é 5, a distância entre **B** e **A** também é 5.
 
 Podemos inicializar as distâncias do grafo em uma matriz:
 
 ``` c
 int dist[][] = {
-    [0, 5, 9, 11, INF, INF],
-    [5, 0, INF, INF, 3, INF],
-    [9, INF, 0, 4, 3, INF],
-    [11, INF, 4, 0, INF, 14], 
-    [INF, 3, 3, INF, 0, 7], 
-    [INF, INF, INF, 14, 7, 0]
+    [0, 5, 9, 11, INF, INF],    // vértice A
+    [5, 0, INF, INF, 3, INF],   // vértice B
+    [9, INF, 0, 4, 3, INF],     // vértice C
+    [11, INF, 4, 0, INF, 14],   // vértice D
+    [INF, 3, 3, INF, 0, 7],     // vértice E
+    [INF, INF, INF, 14, 7, 0]   // vértice F
 }
 ```
 
@@ -167,7 +169,7 @@ Ufa, chega de teoria. Agora um pouco de prática!
 
 Considere o seguinte grafo:
 
-![](graph2.png)
+![Grafo do exercício](grafo_exercicio.png)
 
 Escreva como está a matriz de distâncias após cada iteração do loop mais externo.
 
