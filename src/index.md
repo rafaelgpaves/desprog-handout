@@ -213,13 +213,13 @@ Para te ajudar nisso, lembre-se de algumas coisas que vimos nesse handout:
 ```c
 
 int recursao(int i, int j, int k, int dist[V][V]) {
-    if (k == 0) {
+    if (k < 0) {
         return dist[i][j];
     }
     return min(recursao(i, j, k - 1, dist), recursao(i, k, k - 1, dist) + recursao(k, j, k - 1, dist));
 }
 
-void fw_recursivo(int dist[V][V], int V) {
+void fw_recursivo(int dist[V][V]) {
     for (int i = 0; i < V; i++) {
         for (int j = 0; j < V; j++) {
             dist[i][j] = recursao(i, j, V - 1, dist);
