@@ -190,3 +190,45 @@ Comece construindo a matriz de distâncias:
 :::
 
 ???
+
+Desafio (Opcional)
+--------
+
+Se você não conseguiu chegar até aqui, tudo bem. Mas se quiser fazer um último desafio, vamos seguir em frente!
+
+Falamos como Floyd-Warshall é um algoritmo de programação dinâmica. Mas ele também pode ser escrito usando recursão.
+
+??? Desafio
+
+Como ficaria Floyd-Warshall recursivo?
+
+Para te ajudar nisso, lembre-se de algumas coisas que vimos nesse handout:
++ Iniciamos uma matriz com os pesos.
++ Sempre que adicionamos um ponto no conjunto de pontos que estamos considerando intermediários, todas os valores que precisamos já estão na matriz.
+
+**Dica**: provavelmente será mais fácil pensar em fazer duas funções, uma recursiva (que chame ela mesma) e uma principal que chame essa recursiva.
+
+::: Gabarito
+
+```c
+
+int recursao(int i, int j, int k, int dist[V][V]) {
+    if (k == 0) {
+        return dist[i][j];
+    }
+    return min(recursao(i, j, k - 1, dist), recursao(i, k, k - 1, dist) + recursao(k, j, k - 1, dist));
+}
+
+void fw_recursivo(int dist[V][V], int V) {
+    for (int i = 0; i < V; i++) {
+        for (int j = 0; j < V; j++) {
+            dist[i][j] = recursao(i, j, V - 1, dist);
+        }
+    }
+}
+
+```
+
+:::
+
+???
