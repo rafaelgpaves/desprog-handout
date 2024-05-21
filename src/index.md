@@ -51,25 +51,22 @@ Perceba que esse é um grafo **não direcionado**. Isso significa que a relaçã
 
 MUDAR A PARTIR DAQUI -------------------------------------------------------------
 
-Podemos inicializar as distâncias do grafo em uma matriz:
+Podemos inicializar as distâncias do grafo em uma matriz. Algumas observações para isso:
++ Se essa distância existe como um peso, vamos colocá-la.
++ Se não, vamos adotar como convenção que a distância é infinita (INF).
 
-``` c
-int dist[][] = {
-    [0, 5, 9, 11, INF, INF],    // vértice A
-    [5, 0, INF, INF, 3, INF],   // vértice B
-    [9, INF, 0, 4, 3, INF],     // vértice C
-    [11, INF, 4, 0, INF, 14],   // vértice D
-    [INF, 3, 3, INF, 0, 7],     // vértice E
-    [INF, INF, INF, 14, 7, 0]   // vértice F
-}
-```
+??? Checkpoint
 
-??? Exercício
+Escreva a matriz de distâncias inicial para o grafo acima. Use esse template:
 
-Ao observar a matriz de entrada, o que significam os valores `INF`? E o que significa o valor 0?
+![template-tabela](template_tabela.drawio.png)
+
+Lembre-se que, nesse exemplo, o grafo é não direcionado
 
 ::: Gabarito
-O valor `INF` representa a inexistência de uma aresta entre dois vértices. O valor 0 representa a distância entre um vértice e ele mesmo.
+
+![gabarito-chekpoint](matriz_inicial_checkpoint.drawio.png)
+
 :::
 
 ???
@@ -91,6 +88,8 @@ A distância entre **A** e **B** é inicializada na matriz como 50. No entanto, 
 ???
 
 Apesar de ter sido um exemplo simples, podemos pensar em uma maneira de generalizar essa lógica para todos os vértices do grafo, que podem possuir mais de um caminho intermediário.
+
+Agora que já consideramos caminhos diretos, vamos considerar também caminhos que podem passar por A
 
 Vamos começar apenas com os pesos descritos na imagem. Depois, considerar que um ponto `md A` pode ser usado como ponto intermediário, e ver se o caminho entre todos os pares de pontos, passando por ele, é menor do que o registrado anteriormente. Depois, considerar que um ponto `md B` pode também (além de `md A`) ser considerado como intermediário, e ver novamente se o caminho entre todos os pares de pontos, passando por quaisquer intermediários, é menor do que o registrado anteriormente. E repetir isso até que todos os pontos tenham sido considerados intermediários.
 
