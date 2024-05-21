@@ -43,11 +43,13 @@ O algoritmo
 
 A ideia do algoritmo de Floyd-Warshall é calcular a menor distância entre *todos* os pares de vértices em um grafo de uma vez só. Isso nos permite fazer melhores e mais rápidas comparações do que se analisássemos cada par de vértices separadamente.
 
-Vamos entender como ele funciona através de um exemplo.
+Vamos manter a ideia da rede WI-FI mas rearranjar um pouco a disposição dos vértices para que possamos trabalhar melhor alguns conceitos.
 
-![Grafo exemplo](grafo_exemplo.png)
+![Grafo exemplo](grafo_exemplo.drawio.png)
 
-Perceba que esse é um grafo **não direcionado**. Isso significa que a relação entre os vértices é simétrica, ou seja, se a distância entre **A** e **B** é 5, a distância entre **B** e **A** também é 5.
+Perceba que esse é um grafo **não direcionado**. Isso significa que a relação entre os vértices é simétrica, ou seja, se a distância entre **A** e **B** é 80, a distância entre **B** e **A** também é 80.
+
+MUDAR A PARTIR DAQUI -------------------------------------------------------------
 
 Podemos inicializar as distâncias do grafo em uma matriz:
 
