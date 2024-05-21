@@ -12,31 +12,29 @@ Ao final desse handout, você deve ser capaz de:
 Grafos e o problema do caminho mais curto
 ----------
 
-Imagine que você faz parte de uma entidade no Insper com estudantes espalhados por toda a cidade de São Paulo. Ao debater sobre o melhor horário para reuniões, você percebe que o trânsito é um grande problema para uma boa parte desses estudantes. Além disso, cada um tem um ponto de partida diferente.
+Imagine que o departamento de TI do Insper está com dificuldades de garantir a melhor conectividade WI-FI em todas as áreas do Prédio 2. Você, como aluno exemplar da disciplina de Desafios de Programação, foi convidado para ajudar a equipe a identificar possíveis pontos problemáticos na rede.
 
-Você assumiu a missão de analisar esse problema e sugerir o melhor horário médio para as reuniões considerando o tempo de locomoção de cada estudante. Uma estratégia interessante seria obter o tempo médio de locomoção entre o Insper e cada um dos estudantes e realizar uma análise a partir disso.
+Para otimizar o desempenho da rede, é crucial entender qual seria o tempo mínimo de latência entre diferentes pontos de distribuição de sinal. Um dos jeitos de desenhar esse problema e delinear as informações é através de um **grafo**.
 
-Um dos jeitos de desenhar esse problema e delinear as informações é através de um **grafo**.
-
-![Grafo de rotas](grafo_inicial.png)
+![Grafo de latências](grafo_inicial.drawio.png)
 
 À primeira vista, um diagrama como esse pode parecer confuso, mas ele é uma maneira eficiente de representar relações entre objetos. Vamos tentar entender alguns de seus elementos.
 
-Quando analisamos grafos, denominamos as "bolinhas" de **vértices** e as linhas de **arestas**. Cada aresta tem um **peso**, que, nesse caso, representa o tempo de locomoção (em minutos) entre os vértices. Além disso, embora não seja obrigatório, alguns grafos apresentam setas que indicam a **direção** da relação entre os vértices. Esse é o caso do exemplo acima.
+Quando analisamos grafos, denominamos as "bolinhas" de **vértices** e as linhas de **arestas**. Cada aresta tem um **peso**, que, nesse caso, representa a latência (em milissegundos) entre os vértices.
 
 ??? Aquecimento
 
-Além de "tempo de locomoção", você consegue pensar em outras unidades com as quais as arestas podem ser medidas nesse grafo? E em outros sistemas?
+Além de "latência", você consegue pensar em outras unidades com as quais as arestas podem ser medidas nesse grafo? E em outros sistemas?
 
 ::: Gabarito
-O peso atribuído às arestas pode ser medido em distância, custo, ou qualquer outra unidade que faça sentido para o problema. Por exemplo, se o grafo representasse um sistema de transporte público, o peso poderia ser o custo da passagem. Se o grafo representasse um sistema de comunicação, o peso poderia ser a latência da conexão.
+O peso atribuído às arestas pode ser medido em distância, custo, ou qualquer outra unidade que faça sentido para o problema. Por exemplo, se o grafo representasse um sistema de transporte público, o peso poderia ser o custo da passagem. Se o grafo representasse um sistema de abastecimento de água, o peso poderia ser a quantidade de água que passa por aquela aresta.
 :::
 
 ???
 
-Em nosso sistema, vamos considerar o vértice **I** como o Insper e todos os outros vértices como pontos de partida dos estudantes. É provável que você consiga inferir qual o ponto mais distante e qual o mais próximo a partir da imagem. No entanto, não é uma tarefa rápida calcular o tempo de locomoção exato entre todos os vértices, ainda mais considerando que existem variados caminhos.
+Para garantir que todas as áreas do Prédio 2 estejam cobertas com a melhor conectividade possível, precisamos saber a latência mínima entre cada par de pontos de distribuição de sinal. Isso nos ajuda a identificar pontos problemáticos e como podemos redirecionar o sinal para melhorar a conexão entre eles.
 
-Esse problema e suas variações são conhecidos como o **problema do caminho mais curto**. O algoritmo que vamos falar hoje é um dos que visa simplificar a resolução desse problema. Diferentemente de outros métodos semelhantes, o algoritmo de Floyd-Warshall é capaz de calcular o caminho mais curto entre todos os pares de vértices de uma vez só. Interessante, não?
+Esse problema e suas variações são conhecidos como o **problema do caminho mais curto**. O algoritmo que vamos falar visa simplificar a resolução desse problema. Diferentemente de outros métodos semelhantes, o algoritmo de Floyd-Warshall é capaz de calcular o caminho mais curto entre todos os pares de vértices de uma vez só. Muito conveniente para nós, não é mesmo?
 
 Bom, vamos lá.
 
