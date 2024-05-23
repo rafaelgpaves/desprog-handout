@@ -145,10 +145,24 @@ Talvez você já tenha entendido a ideia então!
 
 Primeiro escreva como a matriz está após considerar B também como intermediário. Agora estendendo essa ideia, como ficaria a matriz na próxima iteração? E na outra? Faça de todas as iterações, incluindo a última
 
-::: Gabarito
+::: Incluindo B
+![gabarito-chekpoint](matriz_b_intermediario.drawio.png)
+:::
 
+::: Incluindo C
+![gabarito-chekpoint](matriz_c_intermediario.drawio.png)
+:::
 
+::: Incluindo D
+![gabarito-chekpoint](matriz_d_intermediario.drawio.png)
+:::
 
+::: Incluindo E
+![gabarito-chekpoint](matriz_e_intermediario.drawio.png)
+:::
+
+::: Incluindo F
+![gabarito-chekpoint](matriz_f_intermediario.drawio.png)
 :::
 
 ???
