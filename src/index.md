@@ -41,25 +41,25 @@ Bom, vamos lá.
 O algoritmo
 ----------
 
-A ideia do algoritmo de Floyd-Warshall é calcular a menor distância entre *todos* os pares de vértices em um grafo de uma vez só. Isso nos permite fazer melhores e mais rápidas comparações do que se analisássemos cada par de vértices separadamente.
-
 Vamos manter a ideia da rede WI-FI mas rearranjar um pouco a disposição dos vértices para que possamos trabalhar melhor alguns conceitos.
 
 ![Grafo exemplo](grafo_exemplo.drawio.png)
 
-Perceba que esse é um grafo **não direcionado**. Isso significa que a relação entre os vértices é simétrica, ou seja, se a distância entre **A** e **B** é 80, a distância entre **B** e **A** também é 80.
+Perceba que esse é um grafo **não direcionado**. Isso significa que a relação entre os vértices é simétrica, ou seja, se a distância entre `md A` e `md B` é 80, a distância entre `md B` e `md A` também é 80.
 
-Podemos inicializar as distâncias do grafo em uma matriz. Algumas observações para isso:
-+ Se essa distância existe como um peso, vamos colocá-la.
-+ Se não, vamos adotar como convenção que a distância é infinita (INF).
+O algoritmo recebe como entrada uma matriz de distâncias entre os vértices. Para entender a construção dessa matriz, vamos considerar:
+
+- Se essa distância existe como um peso, vamos colocá-la.
+- Se não, vamos adotar, por convenção, que a distância é infinita (INF).
+- A distância de um vértice para ele mesmo é sempre 0.
 
 ??? Checkpoint
 
-Escreva a matriz de distâncias inicial para o grafo acima. Use esse template:
+Escreva a matriz de distâncias inicial para o grafo acima. Use esse template (você pode clicar com o botão direito e salvar o arquivo no seu computador):
 
 ![template-tabela](template_tabela.drawio.png)
 
-Lembre-se que, nesse exemplo, o grafo é não direcionado
+Lembre-se que, nesse exemplo, o grafo é não direcionado.
 
 ::: Gabarito
 
@@ -101,7 +101,9 @@ Inicialmente, a distância entre **C** e **D** é 30. Considerando **A** como um
 
 ???
 
-Nesse caso, não estamos ganhando nada, porque passar por **A** custa mais. Mas não é difícil de imaginar que se o novo total fosse menor, poderíamos melhorar nossa estimativa. Vamos ver se melhora para os outros pontos então.
+Nesse caso, não estamos ganhando nada, porque passar por **A** custa mais. Mas não é difícil de imaginar que se o novo total fosse menor, poderíamos melhorar nossa estimativa.
+
+Vamos ver se melhora para os outros pontos, então.
 
 ??? Checkpoint
 
@@ -119,7 +121,7 @@ Escreva para esse grafo a matriz de distâncias, agora aplicando essa nova ideia
 
 Boa! Algumas distâncias estão menores agora!
 
-Então vamos continuar estendendo essa ideia. Vamos considerar agora que podemos usar B também como um ponto intermediário. 
+Então vamos continuar estendendo essa ideia. Vamos considerar agora que podemos usar B também como um ponto intermediário.
 
 ??? Checkpoint
 
@@ -139,7 +141,7 @@ Quando concatenamos, por exemplo, o caminho de **D** a **B** que possa passar po
 
 2. O novo caminho *não é* melhor do que o que a gente tinha.
 
-Talvez você já tenha entendido a ideia então!
+Agora, talvez você já tenha entendido a ideia!
 
 ??? Checkpoint
 
@@ -166,7 +168,6 @@ Primeiro escreva como a matriz está após considerar B também como intermediá
 :::
 
 ???
-
 
 Em resumo, vamos começar apenas com os pesos descritos na imagem. Depois, considerar que um ponto `md A` pode ser usado como ponto intermediário, e ver se o caminho entre todos os pares de pontos, passando por ele, é menor do que o registrado anteriormente. Depois, considerar que um ponto `md B` pode também (além de `md A`) ser considerado como intermediário, e ver novamente se o caminho entre todos os pares de pontos, passando por quaisquer intermediários, é menor do que o registrado anteriormente. E repetir isso até que todos os pontos tenham sido considerados intermediários.
 
