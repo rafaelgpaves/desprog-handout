@@ -49,8 +49,6 @@ Vamos manter a ideia da rede WI-FI mas rearranjar um pouco a disposição dos v�
 
 Perceba que esse é um grafo **não direcionado**. Isso significa que a relação entre os vértices é simétrica, ou seja, se a distância entre **A** e **B** é 80, a distância entre **B** e **A** também é 80.
 
-MUDAR A PARTIR DAQUI -------------------------------------------------------------
-
 Podemos inicializar as distâncias do grafo em uma matriz. Algumas observações para isso:
 + Se essa distância existe como um peso, vamos colocá-la.
 + Se não, vamos adotar como convenção que a distância é infinita (INF).
@@ -87,11 +85,76 @@ A distância entre **A** e **B** é inicializada na matriz como 50. No entanto, 
 
 ???
 
-Apesar de ter sido um exemplo simples, podemos pensar em uma maneira de generalizar essa lógica para todos os vértices do grafo, que podem possuir mais de um caminho intermediário.
+Vamos aplicar essa ideia então para melhorar nossa aproximação inicial. Nossa estimativa inicial só considerava um passo (só caminhos diretos), que não é o que queremos.
 
-Agora que já consideramos caminhos diretos, vamos considerar também caminhos que podem passar por A
+Vamos considerar um segundo passo então. E se, além caminhos diretos, a gente também considerasse caminhos que passam por A?
 
-Vamos começar apenas com os pesos descritos na imagem. Depois, considerar que um ponto `md A` pode ser usado como ponto intermediário, e ver se o caminho entre todos os pares de pontos, passando por ele, é menor do que o registrado anteriormente. Depois, considerar que um ponto `md B` pode também (além de `md A`) ser considerado como intermediário, e ver novamente se o caminho entre todos os pares de pontos, passando por quaisquer intermediários, é menor do que o registrado anteriormente. E repetir isso até que todos os pontos tenham sido considerados intermediários.
+??? Checkpoint
+
+Olhe o gráfico abaixo (o mesmo do começo dessa seção). Qual é a distância inicial de **C** para **D**? E considerando a ideia acima, qual a nova distância entre **C** e **D**?
+
+![Grafo exemplo](grafo_exemplo.drawio.png)
+
+::: Gabarito
+
+Inicialmente, a distância entre **C** e **D** é 30. Considerando **A** como um ponto intermediário, existe outro caminho com uma distância de 180.
+
+???
+
+Nesse caso, não estamos ganhando nada, porque passar por **A** custa mais. Mas não é difícil de imaginar que se o novo total fosse menor, poderíamos melhorar nossa estimativa. Vamos ver se melhora para os outros pontos então.
+
+??? Checkpoint
+
+Escreva para esse grafo a matriz de distâncias, agora aplicando essa nova ideia.
+
+![Grafo exemplo](grafo_exemplo.drawio.png)
+
+::: Gabarito
+
+![gabarito-chekpoint](matriz_checkpoint_a_intermediario.drawio.png)
+
+:::
+
+???
+
+Boa! Algumas distâncias estão menores agora!
+
+Então vamos continuar estendendo essa ideia. Vamos considerar agora que podemos usar B também como um ponto intermediário. 
+
+??? Checkpoint
+
+Na matriz anterior, calculamos o caminho de **D** a **B** que possa passar por **A** e de **B** a **C** que possa passar por **A**. Algum outro caminho que possa passar por **A** e/ou **B** poderia ser melhor que esse?
+
+::: Gabarito
+
+Não, pois aí iríamos repetir vértices, então o caminho não seria o menor possível
+
+:::
+
+???
+
+Quando concatenamos, por exemplo, o caminho de **D** a **B** que possa passar por **A** e de **B** a **C** que possa passar por **A**, já temos o melhor caminho possível que conseguimos até agora usando tanto **A** quanto **B** como intermediários. Com isso, existem duas possibilidades:
+
+1. O novo caminho *é* melhor do que o que a gente tinha.
+
+2. O novo caminho *não é* melhor do que o que a gente tinha.
+
+Talvez você já tenha entendido a ideia então!
+
+??? Checkpoint
+
+Primeiro escreva como a matriz está após considerar B também como intermediário. Agora estendendo essa ideia, como ficaria a matriz na próxima iteração? E na outra? Faça de todas as iterações, incluindo a última
+
+::: Gabarito
+
+
+
+:::
+
+???
+
+
+Em resumo, vamos começar apenas com os pesos descritos na imagem. Depois, considerar que um ponto `md A` pode ser usado como ponto intermediário, e ver se o caminho entre todos os pares de pontos, passando por ele, é menor do que o registrado anteriormente. Depois, considerar que um ponto `md B` pode também (além de `md A`) ser considerado como intermediário, e ver novamente se o caminho entre todos os pares de pontos, passando por quaisquer intermediários, é menor do que o registrado anteriormente. E repetir isso até que todos os pontos tenham sido considerados intermediários.
 
 Essa é a ideia por trás do algoritmo de Floyd-Warshall. Como podemos perceber, é um algoritmo de **programação dinâmica**. Assim como na [APS3](https://ensino.hashi.pro.br/desprog/aps/3/), sempre que precisamos de um valor, podemos pegá-lo na matriz (não precisamos calcular mais de uma vez)
 
